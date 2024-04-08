@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Mubarak</title>
+<style>
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+  
+  .firework {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: fireworks 1s ease infinite alternate;
+  }
+  
+  @keyframes fireworks {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="fireworks"></div>
+<h1>Eid Mubarak</h1>
+<p>Hope this Eid brings joy, prosperity, wealth, and health for you and your nears and dears one. Ameen.</p>
+
+<script>
+// Code for generating fireworks
+function createFireworks() {
+  const fireworks = document.getElementById("fireworks");
+  const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
+  const numFireworks = 30;
+  
+  for (let i = 0; i < numFireworks; i++) {
+    const firework = document.createElement("div");
+    firework.className = "firework";
+    firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    firework.style.left = `${Math.random() * 100}%`;
+    firework.style.top = `${Math.random() * 100}%`;
+    fireworks.appendChild(firework);
+  }
+}
+
+createFireworks();
+</script>
+</body>
+</html>
