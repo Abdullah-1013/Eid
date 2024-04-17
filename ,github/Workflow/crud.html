@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+</head>
+<body>
+    <h1>CRUD Operations</h1>
+
+    <!-- Button to Add a New Post -->
+    <button id="addPostBtn">Add New Post</button>
+
+    <!-- Container to Display Results -->
+    <div id="resultContainer"></div>
+
+    <script>
+        // Function to perform the "Add" operation
+        function addPost() {
+            const newPostData = {
+                userId: 1,
+                title: 'New Post',
+                body: 'This is a new post created via API.'
+            };
+
+            // Make an AJAX request to add the new post
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                body: JSON.stringify(newPostData),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then(response => response.json())
+            .then(newPost => {
+                // Display the added post in the result container
+                const resultContainer = document.getElementById('resultContainer');
+                resultContainer.innerHTML = `<p>New Post Added: ${JSON.stringify(newPost)}</p>`;
+            })
+            .catch(error => {
+                console.error('Error adding new post:', error.message);
+            });
+        }
+
+        // Add event listener to the "Add New Post" button
+        document.getElementById('addPostBtn').addEventListener('click', addPost);
+    </script>
+</body>
+</html>
